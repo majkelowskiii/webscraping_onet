@@ -22,7 +22,7 @@ import os
 url = "https://www.onet.pl"
 
 data = requests.get(url).text
-soup = BeautifulSoup(data, "html.pars.er")
+soup = BeautifulSoup(data, "html.parser")
 
 date = pd.to_datetime('today').strftime('%Y-%m-%d')
 
@@ -46,5 +46,5 @@ for section in soup.find_all('section'):
         df = df._append(new_row, ignore_index = True)
 
 
-path = os.getcwd() + '\\article_list\\' + date +'.txt'
+path = os.getcwd() + '/article_list/' + date +'.txt'
 df.to_csv(path_or_buf=path ,index=False)
